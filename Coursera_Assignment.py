@@ -27,17 +27,6 @@ for i in range(1, len(aktiva)):
 aktiv = aktiv.T.set_index('Területi egység').iloc[:, 17:19]
 
 
-aktiva = pd.DataFrame(aktiv_raw)
-aktiva.iloc[1, 1] = 'megye'
-aktiva.iloc[2, 1] = 'megye'
-aktiva.rename(columns={2016: 'twentysixteen'}, inplace=True)
-aktiv = pd.DataFrame()
-for i in range(1, len(aktiva)):
-    if aktiva.iloc[i, 1] == 'megye':
-        aktiv[i] = aktiva.iloc[i, :]
-aktiv = aktiv.T.set_index('Területi egység').iloc[:, 17:19]
-
-
 unempl = pd.DataFrame()
 unem_raw.rename(columns={'Unnamed: 1': 'Szint'}, inplace=True)
 unem = unem_raw.iloc[:, 0:2]
@@ -103,6 +92,7 @@ plt.legend(['Central Hungary', 'Transdanubia-Western H.',
             'Eastern and Northern H.'])
 plt.show()
 
+"""
 s_C = [n*3.5 for n in Central.iloc[:, 2]]
 s_P = [i*3.5 for i in Plain.iloc[:, 2]]
 s_T = [t*3.5 for t in Trans.iloc[:, 2]]
@@ -115,4 +105,4 @@ Transdanubia = go.Scatter(x=Trans.Gdp_per_capita_2016, y=Trans.Avg_net_monthly_w
 layout = dict(autosize=False, width=1000, height=800, title='Economic developement of Hungarian counties',
               xaxis=dict(title='GDP per capita (thousand Ft)'), yaxis=dict(title='Avarage monthly net wage (Ft)'))
 data = dict(data=[Central_Hungary, Great_Plain, Transdanubia], layout=layout)
-#off.iplot(data, filename='scatter-mode')
+#off.iplot(data, filename='scatter-mode')"""
